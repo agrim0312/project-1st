@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleGDSC.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar">
+        <container class="navcant">
+            <div class="logo">
+                <h4  class="brand" id=12>
+                    brand
+                </h4>
+            </div>
+            <div class="navitems">
+                <div class="navitem"><a href="#">BLOGS</a></div>
+                <div class="navitem"><a href="#">ABOUT</a></div>
+                <div class="navitem"><a href="#">WORKS</a></div>
+            </div>
+        </container>
+    </nav>
+    <section class="hero-overlay">   
+        <container class="centeredcontainer">  
+            <h1 class="hero-text"><span class="HASH">/</span>My To-Do List</h1>
+            <div class="text-area">
+                <input type="text" class="text-title" id="itemtitle" placeholder="what do u want to do ">
+            </div>
+            <div class="button">
+                <button class="btn" onclick=" addTodo() ">
+                    ADD
+                </button>
+                <ul id="mylist">
+                </ul>
+            </div>
+            <!-- <div>
+                <svg viewBox="0 0 255 487" fill="none" preserveAspectRatio="xMIDYMAX meet">
+                    <path d="M127.5 0V341C127.5 341 127.5 373 95.5 373C63.5 373 53.5 373 53.5 373C53.5 419 53.5 432.167 53.5 433L49 429.5L42 426L35.5 424.5H27L20 426L13 429.5L7.5 436L3.5 445L2 454.5L3.5 465L7.5 471.5L13 477L20 481.5L27 483.5H35.5L42 482.5L49 479.5L53.5 476L58.5 471.5L61.5 465V460H42V458H84.5V448.5V440V433V426H92.5H103L113.5 428L123 433L128.5 440L130.5 448.5V458L128.5 465L126 471.5L122 476L113.5 481.5L103 482.5H92.5H84.5V485H148V478.5V473.5L151 476L157 480L164.5 482.5H174.5L179.5 478.5L184.5 471.5V463.5L179.5 457L171.5 453.5L163.5 451.5L156 448.5L149.5 443.5L148 437.5V430.5L151 427L154.5 426L164.5 425H168.5L174.5 428L178 431.5H211C211 472.3 211 483.5 211 484L253 485V482.5H214V433.5H251.5V430.5H211" stroke="#D81B60" stroke-width="3"/>
+                </svg>
+            </div>   -->
+        </container>
+    </section>
+    <script>
+        const item = document.getElementById("itemtitle");
+
+        function addTodo(){
+            console.log(item.value);
+
+            let existingTodos = JSON.parse(localStorage.getItem("todos"));
+
+            const obj = {
+                content: item.value,
+                id : Math.floor(100000 + Math.random()*900000).toString(),
+            }
+
+            console.log(obj);
+            if (existingTodos === undefined){
+                existingTodos = [];
+                existingTodos.push(obj);
+            }else{
+                existingTodos.push(obj);
+            }
+            localStorage.setItem("todos",JSON.stringify(existingTodos));
+
+            updateTodoList(existingTodos);
+            item.value = "";
+        }
+        function updateTodoList(todos){
+            const list = document.getElementById('mylist');
+
+            list.innerHTML = "";
+
+            for(let i = 0; i < todos.length; i++) {
+                list.innerHTML += ` 
+                    <li>${todos[i].content} <i class="fas fa-trash-alt"
+                    onclick="deleteTodo('${todos[i].id}')"></i></li>
+                `
+            }
+        }
+
+        console.log(JSON.parse(localStorage.getItem("todos")));
+
+        updateTodoList(JSON.parse(localStorage.getItem("todos")));
+
+        function deleteTodo(id){
+            console.log(id);
+            const todos = JSON.parse(localStorage.getItem("todos"));
+            let changedTodos = [];
+
+            for (let i=0;i<todos.length;i++) {
+                if(id !== todos[i].id) {
+                    changedTodos.push(todos[i]);
+                }
+            }
+
+            localStorage.setItem("todos", JASON.stringify(changedTodos));
+
+            updateTodoList(changedTodos);
+        }
+
+
+        // let path = document.querySelector('path')
+        // let pathLength = path.getTotalLength()
+
+        // path.style.strokeDasharray = pathLength + ' ' + pathLength;
+
+        // path.style.strokeDashoffset = pathLength;
+
+        // window.addEventListener('scroll', () => {
+        //     var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop ) / 
+        //     (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+            
+        //     var drawLength = pathLength * scrollPercentage;
+
+        //     path.style.strokeDashoffset = pathLength - drawLength;
+        // })
+
+    </script>
+</body>
+</html>

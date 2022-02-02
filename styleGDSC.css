@@ -1,0 +1,131 @@
+.hero-overlay{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    height: 90vh;
+    position:static;
+}
+.centeredcontainer{
+    display:inline-block;
+    width:unset;
+    align-items: center;
+}
+.hero-text{
+    font-family: Rubik;
+    font-size:120px;
+    color:white;
+    animation-name: view;
+    animation-duration:5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+.button{
+    margin-left: 50%;
+}
+body{
+    overflow-x:hidden;
+    background: #1c313a;
+    height:400vh;
+}
+.text-area{
+    margin-left: 43.25%;
+    margin-bottom: 40px;
+}
+.btn{
+    position: relative;
+    display:inline-block;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border-radius: 20px;
+    border: 0px;
+    background-color:#d81b60;
+    color:white;
+    transition-duration: 1s;
+    transition-property: box-shadow, background-color ;
+    transition-delay: 1ms;
+    transition-timing-function: ease;
+    z-index: 1;
+}
+.btn:hover{
+    background-color:#a00037;
+    box-shadow: 4px 2px whitesmoke;
+}
+.navbar{
+    position: relative;
+    display:block;
+    size: fill;
+    background-color:#455a64;
+}
+.navcant{
+    margin-left:96.6667px;
+    margin-right: 96.6667px;
+    position: static;
+    display:inline-flex;
+}
+.logo{
+    position: relative;
+    display: block;
+}
+.navitems{
+    position: relative;
+    display: block;
+    float: inline-end;
+}
+.navitem{
+    position: relative;
+    display:inline-block;   
+    padding: 20px; 
+    z-index: 1;
+
+}
+.brand{
+    color: white;
+    position:static;
+    padding: 20px;
+    margin: 0;
+}
+.navitem a{
+    color:whitesmoke ;
+    text-decoration: none;
+    font-family: Rubik;
+    transition-duration: 0.7s;
+    transition-property: color ;
+    transition-delay: 1ms;
+    transition-timing-function: ease;
+}
+.navitem a:hover{
+    color:#d81b60;
+}
+.text-title{
+    position: relative;
+    padding: 14px;
+    overflow: hidden;
+    border-radius: 20px;
+    z-index: 1;
+}
+.HASH{
+    color:#d81b60;
+}
+svg{
+    height: 100%;
+    position:fixed;
+    text-align: center;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+#mylist{
+    width:40px;
+    height:80px;
+}
